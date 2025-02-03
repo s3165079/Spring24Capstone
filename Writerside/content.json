@@ -1,0 +1,1379 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/user/register": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "postUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/changeUserName": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "changeUserName",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "newUserName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/changePassword": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "changePassword",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "oldPassword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "newPassword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/changeEmail": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "changeEmail",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "newEmail",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/{userName}": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "getUserDTOByUserName",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/review/{reviewRating}": {
+      "get": {
+        "tags": [
+          "review-controller"
+        ],
+        "operationId": "getReviewByReviewRating",
+        "parameters": [
+          {
+            "name": "reviewRating",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReviewDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publishers": {
+      "get": {
+        "tags": [
+          "publisher-controller"
+        ],
+        "operationId": "getAllPublishers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PublisherDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publishers/{publisherName}": {
+      "get": {
+        "tags": [
+          "publisher-controller"
+        ],
+        "operationId": "getPublisherByPublisherName",
+        "parameters": [
+          {
+            "name": "publisherName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PublisherDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/maturityRatings": {
+      "get": {
+        "tags": [
+          "maturity-rating-controller"
+        ],
+        "operationId": "getAllMaturityRatings",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaturityRatingDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/maturityRatings/{minAge}": {
+      "get": {
+        "tags": [
+          "maturity-rating-controller"
+        ],
+        "operationId": "getMaturityRatingByMinAge",
+        "parameters": [
+          {
+            "name": "minAge",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaturityRatingDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/maturityRatings/{letter}": {
+      "get": {
+        "tags": [
+          "maturity-rating-controller"
+        ],
+        "operationId": "getMaturityRatingByLetter",
+        "parameters": [
+          {
+            "name": "letter",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaturityRatingDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/genres": {
+      "get": {
+        "tags": [
+          "genre-controller"
+        ],
+        "operationId": "getAllGenreDTOs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GenreDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/genres/bytype/{genreType}": {
+      "get": {
+        "tags": [
+          "genre-controller"
+        ],
+        "operationId": "getGenreByType",
+        "parameters": [
+          {
+            "name": "genreType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GenreDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/genres/bygenreId/{genreId}": {
+      "get": {
+        "tags": [
+          "genre-controller"
+        ],
+        "operationId": "getGenreByGenreId",
+        "parameters": [
+          {
+            "name": "genreId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenreDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/genres/bydescription/{genreDescription}": {
+      "get": {
+        "tags": [
+          "genre-controller"
+        ],
+        "operationId": "getGenreByDescription",
+        "parameters": [
+          {
+            "name": "genreDescription",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GenreDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games": {
+      "get": {
+        "tags": [
+          "game-controller"
+        ],
+        "operationId": "getAllGames",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games/{gameId}": {
+      "get": {
+        "tags": [
+          "game-controller"
+        ],
+        "operationId": "getGameByGameId",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games/search": {
+      "get": {
+        "tags": [
+          "game-controller"
+        ],
+        "operationId": "getGameByDetails",
+        "parameters": [
+          {
+            "name": "gameName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maturityRating",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games/findByName/{gameName}": {
+      "get": {
+        "tags": [
+          "game-controller"
+        ],
+        "operationId": "getGameByGameName",
+        "parameters": [
+          {
+            "name": "gameName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games/findByMaturityRating/{maturityRating}": {
+      "get": {
+        "tags": [
+          "game-controller"
+        ],
+        "operationId": "getGameDTOByMaturityRating",
+        "parameters": [
+          {
+            "name": "maturityRating",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gamegenres": {
+      "get": {
+        "tags": [
+          "game-genre-controller"
+        ],
+        "operationId": "getAllGameGenreDTOs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameGenreDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gamegenres/bygenre/{genre}": {
+      "get": {
+        "tags": [
+          "game-genre-controller"
+        ],
+        "operationId": "getGameGenreDTOsByGenre",
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Genre"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameGenreDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gamegenres/bygame/{game}": {
+      "get": {
+        "tags": [
+          "game-genre-controller"
+        ],
+        "operationId": "getGameGenreDTOsByGame",
+        "parameters": [
+          {
+            "name": "game",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Game"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameGenreDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gameaccommodations": {
+      "get": {
+        "tags": [
+          "game-accommodation-controller"
+        ],
+        "operationId": "getAllGameAccommodations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameAccommodationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gameaccommodations/bygame/{game}": {
+      "get": {
+        "tags": [
+          "game-accommodation-controller"
+        ],
+        "operationId": "getGameAccommodationByGame",
+        "parameters": [
+          {
+            "name": "game",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Game"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameAccommodationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gameaccommodations/byaccommodation/{accommodation}": {
+      "get": {
+        "tags": [
+          "game-accommodation-controller"
+        ],
+        "operationId": "getGameAccommodationByAccommodation",
+        "parameters": [
+          {
+            "name": "accommodation",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Accommodation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameAccommodationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/developers": {
+      "get": {
+        "tags": [
+          "developer-controller"
+        ],
+        "operationId": "getAllDevelopers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeveloperDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/developers/{developerName}": {
+      "get": {
+        "tags": [
+          "developer-controller"
+        ],
+        "operationId": "getDeveloperByDeveloperName",
+        "parameters": [
+          {
+            "name": "developerName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeveloperDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consoles": {
+      "get": {
+        "tags": [
+          "console-controller"
+        ],
+        "operationId": "getAllConsoles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ConsoleDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consoles/{consoleName}": {
+      "get": {
+        "tags": [
+          "console-controller"
+        ],
+        "operationId": "getConsoleByConsoleName",
+        "parameters": [
+          {
+            "name": "consoleName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ConsoleDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consoles/{consoleId}": {
+      "get": {
+        "tags": [
+          "console-controller"
+        ],
+        "operationId": "getConsoleByConsoleId",
+        "parameters": [
+          {
+            "name": "consoleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsoleDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accommodations": {
+      "get": {
+        "tags": [
+          "accommodation-controller"
+        ],
+        "operationId": "getAllAccommodationDTOs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AccommodationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accommodations/bytype/{accType}": {
+      "get": {
+        "tags": [
+          "accommodation-controller"
+        ],
+        "operationId": "getAccommodationByType",
+        "parameters": [
+          {
+            "name": "accType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AccommodationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accommodations/byDescription/{accDescription}": {
+      "get": {
+        "tags": [
+          "accommodation-controller"
+        ],
+        "operationId": "getAccommodationByDescription",
+        "parameters": [
+          {
+            "name": "accDescription",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AccommodationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserDTO": {
+        "type": "object",
+        "properties": {
+          "userFName": {
+            "type": "string"
+          },
+          "userLName": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "userPassword": {
+            "type": "string"
+          },
+          "userBirthDate": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "ReviewDTO": {
+        "type": "object",
+        "properties": {
+          "reviewRating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reviewContent": {
+            "type": "string"
+          },
+          "reviewDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "reviewID": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PublisherDTO": {
+        "type": "object",
+        "properties": {
+          "publisherName": {
+            "type": "string"
+          },
+          "publisherDesc": {
+            "type": "string"
+          }
+        }
+      },
+      "MaturityRatingDTO": {
+        "type": "object",
+        "properties": {
+          "minAge": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "letter": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          }
+        }
+      },
+      "GenreDTO": {
+        "type": "object",
+        "properties": {
+          "genreId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "genreType": {
+            "type": "string"
+          },
+          "genreDescription": {
+            "type": "string"
+          }
+        }
+      },
+      "Developer": {
+        "type": "object",
+        "properties": {
+          "developerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "developerName": {
+            "type": "string"
+          },
+          "developerDesc": {
+            "type": "string"
+          }
+        }
+      },
+      "GameDTO": {
+        "type": "object",
+        "properties": {
+          "publishers": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Publisher"
+            }
+          },
+          "developers": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Developer"
+            }
+          },
+          "maturityRating": {
+            "$ref": "#/components/schemas/MaturityRating"
+          },
+          "gameName": {
+            "type": "string"
+          },
+          "gameDesc": {
+            "type": "string"
+          },
+          "gameImage": {
+            "type": "string"
+          },
+          "gamePrice": {
+            "type": "number"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "MaturityRating": {
+        "type": "object",
+        "properties": {
+          "minAge": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "letter": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Publisher": {
+        "type": "object",
+        "properties": {
+          "publisherId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "publisherName": {
+            "type": "string"
+          },
+          "publisherDesc": {
+            "type": "string"
+          }
+        }
+      },
+      "Game": {
+        "type": "object",
+        "properties": {
+          "gameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "publishers": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Publisher"
+            }
+          },
+          "developers": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Developer"
+            }
+          },
+          "gameName": {
+            "type": "string"
+          },
+          "gameDesc": {
+            "type": "string"
+          },
+          "gameImage": {
+            "type": "string"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "maturityRatingId": {
+            "$ref": "#/components/schemas/MaturityRating"
+          }
+        }
+      },
+      "GameGenreDTO": {
+        "type": "object",
+        "properties": {
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          },
+          "genre": {
+            "$ref": "#/components/schemas/Genre"
+          }
+        }
+      },
+      "Genre": {
+        "type": "object",
+        "properties": {
+          "genreId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "genreType": {
+            "type": "string"
+          },
+          "genreDescription": {
+            "type": "string"
+          }
+        }
+      },
+      "Accommodation": {
+        "type": "object",
+        "properties": {
+          "accId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accType": {
+            "type": "string"
+          },
+          "accDesc": {
+            "type": "string"
+          }
+        }
+      },
+      "GameAccommodationDTO": {
+        "type": "object",
+        "properties": {
+          "accommodation": {
+            "$ref": "#/components/schemas/Accommodation"
+          },
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          }
+        }
+      },
+      "DeveloperDTO": {
+        "type": "object",
+        "properties": {
+          "developerName": {
+            "type": "string"
+          },
+          "developerDesc": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsoleDTO": {
+        "type": "object",
+        "properties": {
+          "consoleName": {
+            "type": "string"
+          }
+        }
+      },
+      "AccommodationDTO": {
+        "type": "object",
+        "properties": {
+          "accId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accType": {
+            "type": "string"
+          },
+          "accDesc": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

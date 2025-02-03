@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="GPDoc"
+                 name="GamePup Documentation"
+                  start-page="API_Reference.topic">
+
+    <toc-element topic="API_Reference.topic">
+        <toc-element topic="Schemas.topic">
+            <toc-element topic="AccommodationDTO.topic"/>
+            <toc-element topic="ConsoleDTO.topic"/>
+            <toc-element topic="DeveloperDTO.topic"/>
+            <toc-element topic="GameAccommodationDTO.topic"/>
+            <toc-element topic="Accommodation.topic"/>
+            <toc-element topic="Genre.topic"/>
+            <toc-element topic="GameGenreDTO.topic"/>
+            <toc-element topic="Game.topic"/>
+            <toc-element topic="Publisher.topic"/>
+            <toc-element topic="MaturityRating.topic"/>
+            <toc-element topic="GameDTO.topic"/>
+            <toc-element topic="Developer.topic"/>
+            <toc-element topic="GenreDTO.topic"/>
+            <toc-element topic="MaturityRatingDTO.topic"/>
+            <toc-element topic="PublisherDTO.topic"/>
+            <toc-element topic="ReviewDTO.topic"/>
+            <toc-element topic="UserDTO.topic"/>
+        </toc-element>
+    </toc-element>
+</instance-profile>
