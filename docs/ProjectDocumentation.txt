@@ -1,0 +1,39 @@
+Composite Primary Keys in JPA
+
+https://www.baeldung.com/jpa-composite-primary-keys
+
+We used the @IdClass Annotation creating a unique class for the composite key
+which when then associated with the applicable entity
+
+Example:
+public class AccountId implements Serializable {
+    private String accountNumber;
+
+    private String accountType;
+
+    // default constructor
+
+    public AccountId(String accountNumber, String accountType) {
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+    }
+
+    // equals() and hashCode()
+}
+
+@Entity
+@IdClass(AccountId.class)
+public class Account {
+    @Id
+    private String accountNumber;
+
+    @Id
+    private String accountType;
+
+    // other fields, getters and setters
+}
+
+The reason for this decision was related to simplicity of the resulting db query
+
+SELECT account.accountNumber FROM Account account
+
